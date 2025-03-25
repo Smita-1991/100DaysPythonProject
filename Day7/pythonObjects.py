@@ -1,0 +1,6 @@
+num1=input("Enter first number")
+num2=input("Enter second number")
+print(num1,num2)
+(a,b)=(num1,num2)
+(num1,num2)=(b,a)
+print(num1,num2)
