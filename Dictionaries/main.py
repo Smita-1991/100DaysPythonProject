@@ -8,7 +8,6 @@ bidding_value=input("What's your Bid?")
 bidder_info= {name: bidding_value}
 
 print(bidder_info)
-continueBidding='true'
 
 def findHighestBidder(bidding_dictionary):
     winner=""
@@ -22,15 +21,16 @@ def findHighestBidder(bidding_dictionary):
 
 
 
+continueBidding='true'
 
-while continueBidding=='true':
+while continueBidding:
     shouldContinue = input("There are other users who want to bid?")
-    if shouldContinue=='Yes':
-        print("\n"*20)
+    if shouldContinue=='yes'.lower():
         name = input("What's your name?")
         bidding_value = input("What's your Bid?")
         bidder_info[name]=bidding_value
     else:
         continueBidding='false'
         findHighestBidder(bidder_info)
+        break
 
