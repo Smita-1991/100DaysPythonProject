@@ -1,36 +1,39 @@
+import os
+
 import art
 
 print(art.logo)
 
-name = input("What's your name?")
-bidding_value=input("What's your Bid?")
-
-bidder_info= {name: bidding_value}
-
-print(bidder_info)
-
-def findHighestBidder(bidding_dictionary):
-    winner=""
-    highestBid=0
-    for bidder in bidding_dictionary:
-        bidAmount=int(bidding_dictionary[bidder])
-        if bidAmount>highestBid:
-            highestBid=bidAmount
-            winner=bidder
-    print(f"The winner is {winner} with a highest bid of {highestBid}")
 
 
+bidder_dict= {}
 
-continueBidding='true'
+def find_highest_bidder(bidder_dictionary):
+    maxBid = bidder_dict[bidderName]
+    bidder=None
+    for key in bidder_dictionary:
+        if bidder_dictionary[key] > maxBid:
+            maxBid=bidder_dictionary[key]
+            bidder = key
+    print("\n" * 20)
+    print(f"{bidder} is the highest bidder")
 
-while continueBidding:
-    shouldContinue = input("There are other users who want to bid?")
-    if shouldContinue=='yes'.lower():
-        name = input("What's your name?")
-        bidding_value = input("What's your Bid?")
-        bidder_info[name]=bidding_value
+
+should_continue='true'
+while should_continue:
+    bidderName = input("Enter the name of the bidder: ")
+    bidPrize = input("Enter the prize of the bidder: ")
+    bidder_dict[bidderName] = bidPrize
+    another_bidder=input("If there are other users who want to bid?")
+    if another_bidder=='yes':
+        print("\n" * 20)
+        newBidderName = input("Enter the name of the bidder: ")
+        newBidPrize = input("Enter the prize of the bidder: ")
+        bidder_dict[newBidderName] = newBidPrize
     else:
-        continueBidding='false'
-        findHighestBidder(bidder_info)
+        if len(bidder_dict) == 1:
+            print(f"{bidderName} is the highest bidder")
+        else:
+            find_highest_bidder(bidder_dict)
         break
 
