@@ -1,13 +1,12 @@
-import random
 import time
-from turtle import Turtle,Screen
+from turtle import Screen
 
 from Day20.Food import Food
 from Day20.ScoreBoard import Scoreboard
 from Snake import Snake
 
 screen = Screen()
-screen.setup(600,600)
+screen.setup(900,600)
 screen.bgcolor("black")
 screen.title("My Snake Game")
 screen.tracer(0)
@@ -30,27 +29,21 @@ while game_is_on:
     snake.move()
 
     # Detect collision with food
-    if snake.head.distance(food) < 15:
+    if snake.head.distance(food) < 20:
         food.refresh()
         scoreBoard.increase_score()
         snake.extendSnake()
 
     #Detect collision with wall
-    if snake.head.xcor() > 280 or snake.head.xcor() < -280 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
-        scoreBoard.game_over()
-        game_is_on = False
+    if snake.head.xcor() > 430 or snake.head.xcor() < -430 or snake.head.ycor() > 280 or snake.head.ycor() < -280:
+        scoreBoard.resetScore()
+        snake.resetSnake()
 
     #Detect collision with the body
     for seg in snake.segments[1:]:
        if seg.distance(snake.head) < 10:
-            scoreBoard.game_over()
-            game_is_on = False
+            scoreBoard.resetScore()
+            snake.resetSnake()
 
-
-
-
-
-
-
-
+print(f"My score is: {scoreBoard.score}")
 
