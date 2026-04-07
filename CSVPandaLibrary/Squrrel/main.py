@@ -9,11 +9,9 @@ gray_squirrel=data[data["Primary Fur Color"]=="Gray"]
 cinnamon_squirrel=data[data["Primary Fur Color"]=="Cinnamon"]
 black_squirrel=data[data["Primary Fur Color"]=="Black"]
 
-
 gray_count=len(gray_squirrel)
 cinnamon_count=len(cinnamon_squirrel)
 black_count=len(black_squirrel)
-
 
 squirrel_dict={
     "Fur Color":["Gray", "Cinnamon", "Black"],
